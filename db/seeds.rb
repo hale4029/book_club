@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+@author_1 = Author.create(name: "J.K. Rowling")
+@book_1 = Book.create(title: "Harry Potter",
+                number_of_pages: 400,
+                publication_year: 2010)
+@book_1.authors << @author_1
+@author_2 = Author.create!(name: "Ellyn Green")
+@author_3 = Author.create!(name: "Harrison Levin")
+@book_2 = Book.create(title: "Harrison's Potter",
+                number_of_pages: 300,
+                publication_year: 2012)
+@book_2.authors << [@author_2, @author_3]

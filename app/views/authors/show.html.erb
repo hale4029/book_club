@@ -1,0 +1,9 @@
+<h1><%= @author.name %></h1>
+
+Books:
+<ul>
+  <% @author.books.each do |book| %>
+  <li><%= link_to "#{book.title}", "/books/#{book.id}", method: :get %></li>
+  <% end %>
+</ul>
+Average Number of Pages: <%= @author.average_page_count %>

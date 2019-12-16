@@ -16,8 +16,11 @@ describe "Auhtor Show Page", type: :feature do
 
     it "links from book index page take you to author's show page" do
       visit "/books"
-      click_link "J.K. Rowling"
-      expect(path).to eq("/authors/#{@author_1.id}")
+      within "#book-#{@book_1.id}" do
+        click_link "J.K. Rowling"
+      end
+      
+      expect(current_path).to eq("/authors/#{@author_1.id}")
       expect(page).to have_content("J.K. Rowling")
       expect(page).to_not have_content("Harrison Levin")
       expect(page).to have_content("Average Number of Pages: 350")
@@ -26,7 +29,7 @@ describe "Auhtor Show Page", type: :feature do
 
       visit "/books"
       click_link "Harrison Levin"
-      expect(path).to eq("/authors/#{@author_2.id}")
+      expect(current_path).to eq("/authors/#{@author_2.id}")
       expect(page).to have_content("Harrison Levin")
       expect(page).to_not have_content("J.K. Rowling")
       expect(page).to have_content("Average Number of Pages: 300")

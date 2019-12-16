@@ -5,6 +5,8 @@
 Title: <%= book.title %>
 Number of Pages: <%= book.number_of_pages %>
 Publication Year: <%= book.publication_year %>
-Author(s)<%= book.authors.map { |author| author.name } %>
+<% book.authors.map do |author| %>
+<%= link_to "#{author.name}", "/authors/#{author.id}", method: :get %>
+<% end %>
 </section>
 <% end %>

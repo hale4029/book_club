@@ -5,8 +5,7 @@ class Author < ApplicationRecord
   validates_presence_of :name
 
   def average_page_count
-    averages = Author.joins(:books).group(:id).average(:number_of_pages)
-    averages[self.id]
+    averages = Author.joins(:books).where("authors.id = #{self.id}").average(:number_of_pages)
   end
-  
+
 end

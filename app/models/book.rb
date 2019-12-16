@@ -5,5 +5,4 @@ class Book < ApplicationRecord
   validates_presence_of :title,
                        :number_of_pages,
                        :publication_year
-
 end
